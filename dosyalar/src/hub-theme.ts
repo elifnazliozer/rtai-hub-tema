@@ -11,10 +11,24 @@ const MESSAGE_TYPE = 'radiotedu-theme';
 
 const isTheme = (value: unknown): value is HubTheme => value === 'light' || value === 'dark';
 
-function apply(theme: HubTheme) {
-  const root = document.documentElement;
+function setTheme(root: HTMLElement, theme: HubTheme) {
   root.setAttribute('data-theme', theme);
   root.classList.toggle('dark', theme === 'dark');
+}
+
+// İlk yüklemede tema anında uygulanır, sonraki değişikliklerde sayfa tek parça hâlinde yumuşakça geçer.
+// Öğe öğe renk geçişi iç içe yazılarda teklemeye yol açtığı için View Transitions kullanılır;
+// desteklemeyen tarayıcılarda tema anında değişir.
+function apply(theme: HubTheme) {
+  const root = document.documentElement;
+  const previous = root.getAttribute('data-theme');
+  if (previous === theme) return;
+  const animate = previous !== null
+    && typeof document.startViewTransition === 'function'
+    && document.visibilityState === 'visible'
+    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (animate) document.startViewTransition(() => setTheme(root, theme));
+  else setTheme(root, theme);
 }
 
 function fromQuery(): HubTheme | null {

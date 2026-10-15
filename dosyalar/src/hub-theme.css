@@ -26,6 +26,8 @@
   color-scheme:dark;
 }
 body{background:var(--rt-bg)}
+/* Tema değişirken eski ve yeni görünüm arasında yumuşak geçiş (hub-theme.ts → startViewTransition) */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.3s;animation-timing-function:ease}
 
 /* Temel kontroller */
 button{border-color:var(--rt-line);background:var(--rt-panel);color:var(--rt-ink)}

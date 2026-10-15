@@ -4,6 +4,7 @@ Bu paket, Gazete Atölyesi editörünün ([Radio-TEDU/rtai-newspaper-editor](htt
 
 - Hub açık moddayken editör açık, koyu moddayken koyu görünür.
 - Hub'daki ay/güneş düğmesine basıldığında editör de anında değişir. Bunun için Hub'ın kodunda değişiklik gerekmez.
+- Tema değişirken editör 0,3 saniyelik yumuşak bir geçiş yapar. Bu geçiş tarayıcının View Transitions özelliğini kullanır; desteklemeyen eski tarayıcılarda ve "animasyonları azalt" ayarı açık bilgisayarlarda tema anında değişir.
 - Gazete sayfasının kendisi (kâğıt rengi, içerik, PDF/baskı çıktısı) hiç değişmez. Yalnızca editörün arayüzü temalanır.
 
 ## İçerik
