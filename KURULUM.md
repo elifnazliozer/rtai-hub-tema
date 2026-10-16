@@ -5,7 +5,7 @@ Bu paket, Gazete Atölyesi editörünün ([Radio-TEDU/rtai-newspaper-editor](htt
 - Hub açık moddayken editör açık, koyu moddayken koyu görünür.
 - Hub'daki ay/güneş düğmesine basıldığında editör de anında değişir. Bunun için Hub'ın kodunda değişiklik gerekmez.
 - Tema değişirken editör 0,3 saniyelik yumuşak bir geçiş yapar. Bu geçiş tarayıcının View Transitions özelliğini kullanır; desteklemeyen eski tarayıcılarda ve "animasyonları azalt" ayarı açık bilgisayarlarda tema anında değişir.
-- Editörün kaydırma çubukları da temaya uyar: gri, oklu sistem çubuğu yerine ince, yuvarlak ve tema renginde bir çubuk görünür. Hub'ın kendi kaydırma çubukları değişmez.
+- Editörün kaydırma çubukları da temaya uyar: gri, oklu sistem çubuğu yerine ince, yuvarlak ve tema renginde bir çubuk görünür. Aynı tasarımın Hub'ın kendi çubuklarına da uygulanması için `erp-entegrasyon/gazete-atolyesi.user.js` (sürüm 1.1.1 ve üstü) kurulu olmalıdır.
 - Gazete sayfasının kendisi (kâğıt rengi, içerik, PDF/baskı çıktısı) hiç değişmez. Yalnızca editörün arayüzü temalanır.
 
 ## İçerik
@@ -16,6 +16,8 @@ dosyalar/
   src/hub-theme.ts    ← YENİ: Hub ile tema senkronu
   src/main.tsx        ← DEĞİŞTİ: yukarıdaki iki dosyayı bağlar
   index.html          ← DEĞİŞTİ: Albert Sans yazı tipi + kırmızı theme-color
+erp-entegrasyon/      ← Hub (radiotedu.com/erp) için Tampermonkey betiği: sidebar'a Atölye sekmesi
+                         ekler ve Atölye'nin kaydırma çubuğu tasarımını tüm Hub'a uygular (kendi KURULUM.md'si var)
 ```
 
 ## Kurulum (Codex veya elle)
