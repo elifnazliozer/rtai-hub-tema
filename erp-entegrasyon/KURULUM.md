@@ -19,10 +19,28 @@ Başlat dosyası editör klasörünü (`rtai-newspaper-editor-main`) bu klasör�
 
 Başlat dosyası çalışmıyorsa sekme yine görünür ama "Gazete Atölyesi çalışmıyor" uyarısı gösterir; dosyayı çalıştırıp **Yeniden dene**'ye basın.
 
+## Güncelleme (betiği daha önce kurduysanız)
+
+Tampermonkey betikleri kendiliğinden güncellenmez. Depoda betiğin yeni bir sürümü çıktığında (dosyanın başındaki `@version` satırı) her ekip üyesi şunları yapmalıdır:
+
+1. **Önce değişikliklere bakın.** Betik Hub'da sizin oturumunuzla çalışır; bilmediğiniz bir değişikliği yapıştırmayın. GitHub'da `erp-entegrasyon/gazete-atolyesi.user.js` dosyasının **History** sayfasından ya da terminalde şu komutla neyin değiştiğini görebilirsiniz:
+   ```bash
+   git log -p -- erp-entegrasyon/gazete-atolyesi.user.js
+   ```
+   Betik yalnızca `radiotedu.com/erp` sayfalarında çalışmalı ve yalnızca `127.0.0.1` / `localhost` adreslerine bağlanmalıdır (`@match` ve `@connect` satırları). Başka bir adres eklendiyse yapıştırmayın, depo sahibine sorun.
+2. Tampermonkey simgesi → **Gösterge paneli** → **RadioTEDU ERP · Gazete Atölyesi sekmesi** betiğini açın.
+3. Editördeki her şeyi silin, yeni `gazete-atolyesi.user.js` dosyasının **tüm içeriğini** yapıştırın, **Ctrl + S** ile kaydedin.
+4. radiotedu.com/erp sayfasını yenileyin. Gösterge panelinde sürüm numarasının yenisiyle aynı olduğunu kontrol edin.
+
+Güncel sürüm: **1.1.1**. 1.1.0'dan farkı:
+- Atölye'nin kaydırma çubuğu tasarımı Hub'daki tüm çubuklara uygulanır.
+- Bir güvenlik düzeltmesi içerir: Hub menüsünden kopyalanan satırdaki satır içi kodlar artık çalışmaz (ayrıntı: `hub-tema-guvenlik-raporu.pdf`, bulgu 7).
+
+Başlat dosyasını da depodaki yeni sürümle değiştirin.
+
 ## Bilinmesi gerekenler
 
-- Betik, Atölye'nin ince ve yuvarlak kaydırma çubuğu tasarımını Hub'daki **tüm** kaydırma çubuklarına (sidebar, tablolar, sonradan açılan pencereler dahil) uygular; çubuk Hub'ın açık/koyu moduna göre renk değiştirir. Betiği daha önce kurduysanız yeni sürümü (1.1.1) aynı şekilde yapıştırıp kaydedin.
-
+- Betik, Atölye'nin ince ve yuvarlak kaydırma çubuğu tasarımını Hub'daki **tüm** kaydırma çubuklarına (sidebar, tablolar, sonradan açılan pencereler dahil) uygular; çubuk Hub'ın açık/koyu moduna göre renk değiştirir.
 - Sekme **yalnızca bu kurulumu yapan kişinin tarayıcısında** görünür. Diğer ekip üyeleri aynı adımları uygulamalıdır.
 - Gazeteler tarayıcıda saklanır. ERP içinde açılan Atölye'nin kayıtları, Atölye'yi doğrudan `http://127.0.0.1:4173` adresinden açtığınızdaki kayıtlarla aynı değildir (tarayıcı güvenliği gereği ayrılır). Hep aynı yoldan açın; aktarmak için **Paketi indir / Dosyadan gazete ekle** kullanın.
 - Site menüsünü büyük ölçüde değiştirirse betik sekmeyi bulamayabilir. Betiğin başındaki `ANCHOR_LABELS` listesine sidebar'daki başka bir menü adını yazmak genelde yeter.
